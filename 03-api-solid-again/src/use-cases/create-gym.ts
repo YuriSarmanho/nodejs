@@ -3,7 +3,7 @@ import type { GymsRepository } from '@/repositories/gyms-repository'
 
 interface CreateGymUseCaseRequest {
   title: string
-  desciption: string | null
+  description: string | null
   phone: string | null
   latitude: number
   longitude: number
@@ -18,14 +18,14 @@ export class CreateGymUseCase {
 
   async execute({
     title,
-    desciption,
+    description,
     phone,
     latitude,
     longitude,
   }: CreateGymUseCaseRequest): Promise<CreateGymUseCaseResponse> {
     const gym = await this.gymsRepository.create({
       title,
-      desciption,
+      description,
       phone,
       latitude,
       longitude,
