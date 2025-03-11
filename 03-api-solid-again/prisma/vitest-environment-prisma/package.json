@@ -5,5 +5,6 @@
   "main": "prisma-test-enviroment.js",
   "keywords": [],
   "author": "",
+  "transformMode": "ssr",
   "license": "ISC"
 }
