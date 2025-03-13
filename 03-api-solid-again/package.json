@@ -13,6 +13,7 @@
     "test": "vitest run src/use-cases",
     "pretest:e2e": "run-s test:create-prisma-enviroment && test:install-prisma-enviroment",
     "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest  --dir src/http",
     "test:watch": "vitest --dir src/use-cases",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.9.0",
+    "@types/supertest": "6.0.2",
     "@typescript-eslint/eslint-plugin": "8.15.0",
     "@typescript-eslint/parser": "8.15.0",
     "@vitest/coverage-v8": "2.1.5",
