@@ -1,6 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import type { QuestionRepository } from '../repositories/question-repository'
 import { Question } from '../../enterprise/entities/question'
+import { MakeQuestion } from 'tests/factories/make-questions'
 
 interface CreateQuestionUseCaseRequest {
   authorId: string
@@ -20,11 +21,7 @@ export class CreateQuestionUseCase {
     title,
     content,
   }: CreateQuestionUseCaseRequest): Promise<CreateQuestionUseCaseResponse> {
-    const question = Question.create({
-      authorId: new UniqueEntityID(authorId),
-      title,
-      content,
-    })
+    const question = MakeQuestion()
 
     await this.questionRepository.create(question)
 
