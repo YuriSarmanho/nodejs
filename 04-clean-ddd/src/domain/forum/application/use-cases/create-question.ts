@@ -1,4 +1,3 @@
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import type { QuestionRepository } from '../repositories/question-repository'
 import { Question } from '../../enterprise/entities/question'
 import { MakeQuestion } from 'tests/factories/make-questions'
