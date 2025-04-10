@@ -7,17 +7,19 @@ import {
 } from '@/domain/forum/enterprise/entities/question'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 
-export function MakeQuestion(override: Partial<QuestionProps> = {},
+export function MakeQuestion(
+  override: Partial<QuestionProps> = {},
   id?: UniqueEntityID,
 ) {
-  const question = Question.create({
-    authorId: new UniqueEntityID(),
-    title: faker.lorem.sentence(),
-    content: faker.lorem.text(),
-    ...override,
-  },
-  id
-)
+  const question = Question.create(
+    {
+      authorId: new UniqueEntityID(),
+      title: faker.lorem.sentence(),
+      content: faker.lorem.text(),
+      ...override,
+    },
+    id,
+  )
 
   return question
 }
