@@ -1,17 +1,17 @@
 import { InMemoryAnswersRepository } from 'tests/repository/in-memory-answers-repository'
 import { MakeAnswers } from 'tests/factories/make-answers'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryQuestionRespository } from 'tests/repository/in-memory-questions-resitory'
+import { InMemoryQuestionRepository } from 'tests/repository/in-memory-questions-resitory'
 import { ChooseQuestionBestAnswerUseCase } from './choose-question-best.answer'
 import { MakeQuestion } from 'tests/factories/make-questions'
 
-let inMemoryQuestionsRepository: InMemoryQuestionRespository
+let inMemoryQuestionsRepository: InMemoryQuestionRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: ChooseQuestionBestAnswerUseCase
 
 describe('Choose Question Best Answer', () => {
   beforeEach(() => {
-    inMemoryQuestionsRepository = new InMemoryQuestionRespository()
+    inMemoryQuestionsRepository = new InMemoryQuestionRepository()
     inMemoryAnswersRepository = new InMemoryAnswersRepository()
 
     sut = new ChooseQuestionBestAnswerUseCase(
@@ -29,6 +29,8 @@ describe('Choose Question Best Answer', () => {
 
     await inMemoryQuestionsRepository.create(question)
     await inMemoryAnswersRepository.create(answer)
+
+    console.log(inMemoryQuestionsRepository.items[0])
 
     await sut.execute({
       answerId: answer.id.toString(),

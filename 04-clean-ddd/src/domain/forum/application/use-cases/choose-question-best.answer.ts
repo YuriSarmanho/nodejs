@@ -38,7 +38,7 @@ export class ChooseQuestionBestAnswerUseCase {
       throw new Error('Not allowed')
     }
 
-    question.bestAnswerID = answer.id
+    question.bestAnswerId = answer.id
 
     await this.questionRepository.save(question)
 
