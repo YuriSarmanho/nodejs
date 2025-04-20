@@ -2,7 +2,7 @@ import { InMemoryAnswersRepository } from 'tests/repository/in-memory-answers-re
 import { MakeAnswers } from 'tests/factories/make-answers'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { InMemoryQuestionRepository } from 'tests/repository/in-memory-questions-resitory'
-import { ChooseQuestionBestAnswerUseCase } from './choose-question-best.answer'
+import { ChooseQuestionBestAnswerUseCase } from './choose-question-best-answer'
 import { MakeQuestion } from 'tests/factories/make-questions'
 
 let inMemoryQuestionsRepository: InMemoryQuestionRepository
