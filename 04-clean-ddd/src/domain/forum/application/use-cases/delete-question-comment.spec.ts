@@ -36,7 +36,7 @@ describe('Delete Question Comment', () => {
     
     expect(() => {
       return  sut.execute({
-        questionCommentId: questionComment.id.toString(),
+        questionCommentId: questionComment.id.toString(),    
         authorId: 'author-2',
       })
     }).rejects.toBeInstanceOf(Error)
