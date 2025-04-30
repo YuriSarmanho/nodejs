@@ -3,14 +3,25 @@ import { MakeAnswers } from 'tests/factories/make-answers'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { EditAnswerUseCase } from './edit-answer'
 import { NotAllowedError } from './erros/not-allowed-error'
+import { InMemoryAnswerAttachmentsRepository } from 'tests/repository/in-memory-answer-attachment-repository'
+import { MakeAnswerAttachment } from 'tests/factories/make-answer-attachment'
 
+let inMemoryAnswerAttachmentsRepository: InMemoryAnswerAttachmentsRepository
 let inMemoryAnswersRepository: InMemoryAnswersRepository
 let sut: EditAnswerUseCase
 
 describe('edit Answer', () => {
   beforeEach(() => {
-    inMemoryAnswersRepository = new InMemoryAnswersRepository()
-    sut = new EditAnswerUseCase(inMemoryAnswersRepository)
+    inMemoryAnswerAttachmentsRepository =
+      new InMemoryAnswerAttachmentsRepository()
+    inMemoryAnswersRepository = new InMemoryAnswersRepository(
+      inMemoryAnswerAttachmentsRepository,
+    )
+
+    sut = new EditAnswerUseCase(
+      inMemoryAnswersRepository,
+      inMemoryAnswerAttachmentsRepository,
+    )
   })
 
   it('should be able to edit a answer', async () => {
@@ -21,12 +32,23 @@ describe('edit Answer', () => {
       new UniqueEntityID('answer-1'),
     )
 
-    inMemoryAnswersRepository.create(newAnswer)
+    await inMemoryAnswersRepository.create(newAnswer)
+    inMemoryAnswerAttachmentsRepository.items.push(
+      MakeAnswerAttachment({
+        answerId: newAnswer.id,
+        attachmentId: new UniqueEntityID('1'),
+      }),
+      MakeAnswerAttachment({
+        answerId: newAnswer.id,
+        attachmentId: new UniqueEntityID('2'),
+      }),
+    )
 
     await sut.execute({
       answerId: newAnswer.id.toValue(),
       authorId: 'author-1',
       content: 'Conteudo Teste',
+      attachmentsIds: ['1', '3'],
     })
 
     expect(inMemoryAnswersRepository.items[0]).toMatchObject({
@@ -48,6 +70,7 @@ describe('edit Answer', () => {
       answerId: 'answer-1',
       authorId: 'author-2',
       content: 'Conteudo Teste',
+      attachmentsIds: [],
     })
 
     expect(result.isLeft()).toBe(true)
