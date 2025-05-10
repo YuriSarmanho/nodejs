@@ -1,8 +1,10 @@
 {
-  "extends": "@rocketseat/eslint-config/node",
+  "extends": [
+    "@rocketseat/eslint-config/node"
+  ],
   "rules": {
     "no-useless-constructor": "off",
-    "eol-last": ["error", "always"]
-  },
-    "eslint.options": { "configFile": "C:/mydirectory/.eslintrc.json" }
+    "no-new": "off",
+    "@typescript-eslint/no-unused-vars": "off"
+  }
 }

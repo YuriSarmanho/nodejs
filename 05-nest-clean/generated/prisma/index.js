@@ -141,7 +141,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/yurisarmanho/Documents/nodejs/05-nest-clean/generated/prisma",
+      "value": "/home/yurisarmanho/Documentos/projetos-estudo/nodejs/05-nest-clean/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -155,11 +155,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/yurisarmanho/Documents/nodejs/05-nest-clean/prisma/schema.prisma",
+    "sourceFilePath": "/home/yurisarmanho/Documentos/projetos-estudo/nodejs/05-nest-clean/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma",
