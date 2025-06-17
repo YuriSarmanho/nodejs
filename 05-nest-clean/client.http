@@ -6,8 +6,8 @@ POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
-  "name": "Yuri teste Monteiro",
-  "email": "teste@teste.com",
+  "name": "Yuri teste Monteiro 2",
+  "email": "teste@tes2te.com",
   "password": "1234"
 }
 ###
@@ -17,7 +17,7 @@ POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
-  "email": "teste@teste.com",
+  "email": "teste@tes2te.com",
   "password": "1234"
 }
 
@@ -28,6 +28,12 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "Nova pergunta",
-  "content": "Conteudo da nova pergunta"
+  "title": "Nova222 pergunta",
+  "content": "Cont2eudo da nova pergunta"
 }
+
+###
+# @name fetch_recent_questions
+GET {{baseUrl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
