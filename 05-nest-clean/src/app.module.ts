@@ -16,7 +16,12 @@ import { FetchRecentQuestionsController } from './controllers/fetch-recent-quest
     }),
     AuthModule,
   ],
-  controllers: [CreateAccountController, AuthenticateController, CreateQuestionController,FetchRecentQuestionsController],
+  controllers: [
+    CreateAccountController,
+    AuthenticateController,
+    CreateQuestionController,
+    FetchRecentQuestionsController,
+  ],
   providers: [PrismaService],
 })
 export class AppModule {}

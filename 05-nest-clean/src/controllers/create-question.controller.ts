@@ -18,16 +18,14 @@ type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>
 @Controller('/questions')
 @UseGuards(JwtAuthGuard)
 export class CreateQuestionController {
-  constructor(
-    private prisma: PrismaService
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   @Post()
   async handle(
     @Body(bodyValidationPipe) body: CreateQuestionBodySchema,
-    @CurrentUser() user: UserPayload
+    @CurrentUser() user: UserPayload,
   ) {
-    const {title, content} = body
+    const { title, content } = body
     const userId = user.sub
 
     const slug = this.convertToSlug(title)
@@ -38,7 +36,7 @@ export class CreateQuestionController {
         title,
         content,
         slug,
-      }
+      },
     })
   }
 
