@@ -1,6 +1,6 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { SendNotificationUseCase } from './send-notification'
-import { InMemoryNotificationRepository } from 'tests/repository/in-memory-notification-repository'
+import { InMemoryNotificationRepository } from 'test/repository/in-memory-notification-repository'
 
 let inMemoryNotificationsRepository: InMemoryNotificationRepository
 let sut: SendNotificationUseCase

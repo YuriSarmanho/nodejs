@@ -2,7 +2,7 @@ import { execSync } from 'child_process'
 import { randomUUID } from 'crypto'
 import 'dotenv/config'
 
-import { PrismaService } from '@/prisma/prisma.service'
+import { PrismaService } from '@/infra/prisma/prisma.service'
 
 const prisma = new PrismaService()
 

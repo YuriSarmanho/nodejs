@@ -1,18 +1,18 @@
-import { MakeAnswers } from 'tests/factories/make-answers'
+import { MakeAnswers } from 'test/factories/make-answers'
 import { OnAnswerCreated } from './on-answer-created'
-import { InMemoryAnswersRepository } from 'tests/repository/in-memory-answers-repository'
-import { InMemoryAnswerAttachmentsRepository } from 'tests/repository/in-memory-answer-attachment-repository'
-import { InMemoryQuestionRepository } from 'tests/repository/in-memory-questions-resitory'
-import { InMemoryQuestionAttachmentsRepository } from 'tests/repository/in-memory-question-attachments-repository'
+import { InMemoryAnswersRepository } from 'test/repository/in-memory-answers-repository'
+import { InMemoryAnswerAttachmentsRepository } from 'test/repository/in-memory-answer-attachment-repository'
+import { InMemoryQuestionRepository } from 'test/repository/in-memory-questions-resitory'
+import { InMemoryQuestionAttachmentsRepository } from 'test/repository/in-memory-question-attachments-repository'
 import {
   SendNotificationUseCase,
   SendNotificationUseCaseRequest,
   SendNotificationUseCaseResponse,
 } from '../use-cases/send-notification'
-import { InMemoryNotificationRepository } from 'tests/repository/in-memory-notification-repository'
-import { MakeQuestion } from 'tests/factories/make-questions'
+import { InMemoryNotificationRepository } from 'test/repository/in-memory-notification-repository'
+import { MakeQuestion } from 'test/factories/make-questions'
 import { MockInstance } from 'vitest'
-import { waitFor } from 'tests/utils/wait-for'
+import { waitFor } from 'test/utils/wait-for'
 
 let inMemoryQuestionsAttachmentsRepository: InMemoryQuestionAttachmentsRepository
 let inMemoryQuestionsRepository: InMemoryQuestionRepository
@@ -29,6 +29,7 @@ let sendNotificationExecuteSpy: MockInstance<
 
 describe('On Answer Created', () => {
   beforeEach(() => {
+    inMemomoryNotificationRepository = new InMemoryNotificationRepository()
     sendNotificationUseCase = new SendNotificationUseCase(
       inMemomoryNotificationRepository,
     )
@@ -42,7 +43,6 @@ describe('On Answer Created', () => {
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository,
     )
-    inMemomoryNotificationRepository = new InMemoryNotificationRepository()
 
     sendNotificationExecuteSpy = vi.spyOn(sendNotificationUseCase, 'execute')
 

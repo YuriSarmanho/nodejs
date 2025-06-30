@@ -15,10 +15,6 @@ export abstract class Comment<
     return this.props.authorId
   }
 
-  get questionId() {
-    return this.props.questionId
-  }
-
   get content() {
     return this.props.content
   }
