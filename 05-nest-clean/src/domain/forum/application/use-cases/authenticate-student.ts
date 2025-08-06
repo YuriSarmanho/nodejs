@@ -1,7 +1,7 @@
 import { right, Either, left } from '@/core/either'
 import { Injectable } from '@nestjs/common'
 import { StudentsRepository } from '../repositories/students-repository'
-import { HashCompare } from '../cryptography/hash-compare'
+import { HashCompare } from '../cryptography/hash-comparer'
 import { Encrypter } from '../cryptography/encrypter'
 import { WrongCredentialsError } from './errors/wrong-credentials-error'
 
