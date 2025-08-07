@@ -26,10 +26,10 @@ export class FetchRecentQuestionsController {
     const result = await this.fetchRecentQuestions.execute({
       page,
     })
-    if(result.isLeft()) {
+    if (result.isLeft()) {
       throw new Error()
     }
-    
+
     const questions = result.value.questions
 
     return { questions: questions.map(QuestionPresenter.toHTTP) }

@@ -15,26 +15,29 @@ describe('Authenticate Student', () => {
     fakeHasher = new FakeHasher()
     fakeEncrypter = new FakeEncrypter()
 
-    sut = new AuthenticateStudentUseCase(inMemoryStudentsRepository,fakeHasher,fakeEncrypter)
+    sut = new AuthenticateStudentUseCase(
+      inMemoryStudentsRepository,
+      fakeHasher,
+      fakeEncrypter,
+    )
   })
 
   it('should be able to authenticate a student', async () => {
     const student = MakeStudent({
       email: 'johndoe@example.com',
-      password: await fakeHasher.hash('123456')
-
+      password: await fakeHasher.hash('123456'),
     })
 
     inMemoryStudentsRepository.items.push(student)
 
     const result = await sut.execute({
-     email: 'johndoe@example.com',
-     password: '123456'
+      email: 'johndoe@example.com',
+      password: '123456',
     })
 
     expect(result.isRight()).toBe(true)
     expect(result.value).toEqual({
-      accessToken: expect.any(String)
+      accessToken: expect.any(String),
     })
   })
 })

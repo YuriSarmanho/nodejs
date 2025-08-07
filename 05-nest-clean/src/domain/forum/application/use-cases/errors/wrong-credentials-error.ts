@@ -1,4 +1,4 @@
-import { UseCaseError } from "@/core/errors/use-case-erro";
+import { UseCaseError } from '@/core/errors/use-case-erro'
 
 export class WrongCredentialsError extends Error implements UseCaseError {
   constructor() {
