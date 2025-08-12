@@ -21,7 +21,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
     return PrismaAnswerMapper.toDomain(answer)
   }
 
-  async findManyByAnswerId(
+  async findManyByQuestionId(
     questionId: string,
     { page }: PaginationParams,
   ): Promise<Answer[]> {
