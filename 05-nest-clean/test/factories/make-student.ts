@@ -34,9 +34,9 @@ export class StudentFactory {
     const student = MakeStudent(data)
 
     await this.prisma.user.create({
-      data: PrismaStudentMapper.toPrisma(student)
+      data: PrismaStudentMapper.toPrisma(student),
     })
-    
+
     return student
   }
 }

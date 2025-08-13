@@ -1,4 +1,4 @@
-import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug';
+import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { BadRequestException, Controller, Get, Param } from '@nestjs/common'
 import { QuestionPresenter } from '../presenters/question-presenter'
 
@@ -11,9 +11,9 @@ export class GetQuestionBySlugController {
     const result = await this.getQuestionBySlug.execute({
       slug,
     })
-    if(result.isLeft()) {
+    if (result.isLeft()) {
       throw new BadRequestException()
-    } 
+    }
 
     return { questions: QuestionPresenter.toHTTP(result.value.question) }
   }

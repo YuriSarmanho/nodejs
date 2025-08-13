@@ -4,7 +4,7 @@ import { Attachment as PrismaAttachment } from '@prisma/client'
 
 export class PrismaAnswerAttachmentMapper {
   static toDomain(raw: PrismaAttachment): AnswerAttachment {
-    if(!raw.answerId) {
+    if (!raw.answerId) {
       throw new Error('Invalid attachment type.')
     }
 

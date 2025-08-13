@@ -1,10 +1,11 @@
 import {
   Body,
   Controller,
-  Post, HttpCode,
+  Post,
+  HttpCode,
   UsePipes,
   ConflictException,
-  BadRequestException
+  BadRequestException,
 } from '@nestjs/common'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import { z } from 'zod'
@@ -34,10 +35,10 @@ export class CreateAccountController {
     const result = await this.registerStudent.execute({
       name,
       email,
-      password
+      password,
     })
 
-    if(result.isLeft()) {
+    if (result.isLeft()) {
       const error = result.value
 
       switch (error.constructor) {
@@ -46,6 +47,6 @@ export class CreateAccountController {
         default:
           throw new BadRequestException(error.message)
       }
-    } 
+    }
   }
 }

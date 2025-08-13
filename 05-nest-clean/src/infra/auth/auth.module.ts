@@ -27,12 +27,12 @@ import { EnvModule } from '../env/env.module'
     }),
   ],
   providers: [
-    JwtStrategy,  
+    JwtStrategy,
     EnvService,
     {
       provide: APP_GUARD,
-      useClass: JwtAuthGuard
-    }
+      useClass: JwtAuthGuard,
+    },
   ],
 })
 export class AuthModule {}

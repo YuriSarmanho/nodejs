@@ -24,9 +24,9 @@ export class FetchRecentQuestionsController {
     const result = await this.fetchRecentQuestions.execute({
       page,
     })
-    if(result.isLeft()) {
+    if (result.isLeft()) {
       throw new BadRequestException()
-    } 
+    }
 
     const questions = result.value.questions
 

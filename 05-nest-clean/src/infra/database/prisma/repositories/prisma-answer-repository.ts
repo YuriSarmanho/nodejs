@@ -9,7 +9,7 @@ import { PrismaAnswerMapper } from '../mappers/prisma-answer-mapper'
 export class PrismaAnswersRepository implements AnswersRepository {
   constructor(private prisma: PrismaService) {}
 
- async findById(id: string): Promise<Answer | null> {
+  async findById(id: string): Promise<Answer | null> {
     const answer = await this.prisma.answer.findUnique({
       where: {
         id,

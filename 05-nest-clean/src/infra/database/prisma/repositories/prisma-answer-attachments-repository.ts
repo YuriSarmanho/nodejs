@@ -14,7 +14,7 @@ export class PrismaAnswerAttachmentsRepository
     const answerAttachments = await this.prisma.attachment.findMany({
       where: {
         answerId,
-      }
+      },
     })
 
     return answerAttachments.map(PrismaAnswerAttachmentMapper.toDomain)
@@ -24,7 +24,7 @@ export class PrismaAnswerAttachmentsRepository
     await this.prisma.attachment.deleteMany({
       where: {
         answerId,
-      }
+      },
     })
   }
 }

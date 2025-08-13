@@ -19,14 +19,14 @@ import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/g
     AuthenticateController,
     CreateQuestionController,
     FetchRecentQuestionsController,
-    GetQuestionBySlugController
+    GetQuestionBySlugController,
   ],
   providers: [
     CreateQuestionUseCase,
     FetchRecentQuestionsUseCase,
     RegisterStudentUseCase,
     AuthenticateStudentUseCase,
-    GetQuestionBySlugUseCase
+    GetQuestionBySlugUseCase,
   ],
 })
 export class HttpModule {}

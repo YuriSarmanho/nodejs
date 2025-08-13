@@ -27,18 +27,19 @@ export function MakeQuestion(
   return question
 }
 
-
 @Injectable()
 export class QuestionFactory {
   constructor(private prisma: PrismaService) {}
 
-  async makePrismaQuestion(data: Partial<QuestionProps> = {}): Promise<Question> {
+  async makePrismaQuestion(
+    data: Partial<QuestionProps> = {},
+  ): Promise<Question> {
     const question = MakeQuestion(data)
 
     await this.prisma.question.create({
-      data: PrismaQuestionMapper.toPrisma(question)
+      data: PrismaQuestionMapper.toPrisma(question),
     })
-    
+
     return question
   }
 }

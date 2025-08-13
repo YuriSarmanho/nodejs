@@ -2,7 +2,9 @@ import {
   BadRequestException,
   Body,
   Controller,
-  Post, UnauthorizedException, UsePipes
+  Post,
+  UnauthorizedException,
+  UsePipes,
 } from '@nestjs/common'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import { z } from 'zod'
@@ -29,10 +31,10 @@ export class AuthenticateController {
 
     const result = await this.authenticateStudent.execute({
       email,
-      password
+      password,
     })
 
-    if(result.isLeft()) {
+    if (result.isLeft()) {
       const error = result.value
 
       switch (error.constructor) {
@@ -41,7 +43,7 @@ export class AuthenticateController {
         default:
           throw new BadRequestException(error.message)
       }
-    } 
+    }
 
     const { accessToken } = result.value
 
