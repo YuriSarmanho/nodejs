@@ -54,6 +54,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
       where: {
         id: data.id,
       },
+      data,
     })
   }
 
@@ -62,9 +63,8 @@ export class PrismaAnswersRepository implements AnswersRepository {
 
     await this.prisma.answer.update({
       where: {
-        id: data.id,
+        id: data.id.toString(),
       },
-      data,
     })
   }
 }
