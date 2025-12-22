@@ -20,9 +20,9 @@ describe('Create Answer', () => {
   it('should be able to create an answer', async () => {
     const result = await sut.execute({
       questionId: '1',
-      instructorId: '1',
+      authorId: '1',
       content: 'Conteudo da resposta',
-      attachmentsIds: ['1', '2'],
+      attachmentIds: ['1', '2'],
     })
 
     expect(result.isRight()).toBe(true)

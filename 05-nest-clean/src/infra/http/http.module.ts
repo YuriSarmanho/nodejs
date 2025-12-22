@@ -19,7 +19,7 @@ import { AnswerQuestionController } from './controllers/answer-question.controll
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
 import { EditAnswerController } from './controllers/edit-answer.controller'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/edit-answer'
-import { DeleteAnswerController } from './controllers/delete-asnwer.controller'
+import { DeleteAnswerController } from './controllers/delete-answer.controller'
 import { DeleteAnswersUseCase } from '@/domain/forum/application/use-cases/delete-answers'
 
 @Module({

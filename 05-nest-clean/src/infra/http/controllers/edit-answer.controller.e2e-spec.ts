@@ -34,7 +34,7 @@ describe('Edit answer (E2E)', () => {
     await app.init()
   })
 
-  test('[PUT] /answer/:id', async () => {
+  test('[PUT] /answers/:id', async () => {
     const user = await studentFactory.makePrismaStudent()
 
     const accessToken = jwt.sign({ sub: user.id.toString() })
@@ -43,7 +43,7 @@ describe('Edit answer (E2E)', () => {
       authorId: user.id
     })
 
-    const answer = await answerFactory.makePrismaQuestion({
+    const answer = await answerFactory.makePrismaAnswer({
       questionId: question.id,
       authorId: user.id,
     })
@@ -58,13 +58,11 @@ describe('Edit answer (E2E)', () => {
       })
 
     expect(response.statusCode).toBe(204)
-
-    const answerOnDatabase = await prisma.answer.findFirst({
+    const answerOnDatabase = await prisma.answer.findMany({
       where: {
-        title: 'New answer content',
+        content: 'New answer content',
       },
     })
-
     expect(answerOnDatabase).toBeTruthy()
   })
 })

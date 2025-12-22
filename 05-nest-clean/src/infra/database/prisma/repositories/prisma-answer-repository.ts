@@ -52,18 +52,15 @@ export class PrismaAnswersRepository implements AnswersRepository {
 
     await this.prisma.answer.delete({
       where: {
-        id: data.id,
+        id: answer.id.toString(),
       },
-      data,
     })
   }
 
-  async delete(answer: Answer): Promise<void> {
-    const data = PrismaAnswerMapper.toPrisma(answer)
-
-    await this.prisma.answer.update({
+async delete(answer: Answer): Promise<void> {
+    await this.prisma.answer.delete({
       where: {
-        id: data.id.toString(),
+        id: answer.id.toString(),
       },
     })
   }

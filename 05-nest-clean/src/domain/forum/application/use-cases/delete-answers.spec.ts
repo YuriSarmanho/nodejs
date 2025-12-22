@@ -42,7 +42,7 @@ describe('Delete Answers', () => {
     )
 
     await sut.execute({
-      answersId: 'answers-1',
+      answerId: 'answers-1',
       authorId: 'author-1',
     })
 
@@ -60,7 +60,7 @@ describe('Delete Answers', () => {
     inMemoryAnswersRepository.create(newAnswers)
 
     const result = await sut.execute({
-      answersId: 'answers-1',
+      answerId: 'answers-1',
       authorId: 'author-2',
     })
 
