@@ -7,10 +7,10 @@ import {
 } from '@/domain/forum/enterprise/entities/answer-comment'
 import { Slug } from '@/domain/forum/enterprise/entities/value-objects/slug'
 import { Injectable } from '@nestjs/common'
-import type { PrismaService } from '@/infra/database/prisma/prisma.service'
+import  { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { PrismaAnswerCommentMapper } from '@/infra/database/prisma/mappers/prisma-answer-comment-mapper'
 
-export function MakeAnswerComment(
+export function makeAnswerComment(
   override: Partial<AnswerCommentProps> = {},
   id?: UniqueEntityID,
 ) {
@@ -31,10 +31,10 @@ export function MakeAnswerComment(
 export class AnswerCommentFactory {
   constructor(private prisma: PrismaService) {}
 
-  async makePrismaAnswer(
+  async makePrismaAnswerComment(
     data: Partial<AnswerCommentProps> = {},
   ): Promise<AnswerComment> {
-    const answerComment = MakeAnswerComment(data)
+    const answerComment = makeAnswerComment(data)
 
     await this.prisma.comment.create({
       data: PrismaAnswerCommentMapper.toPrisma(answerComment),
