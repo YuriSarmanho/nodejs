@@ -10,7 +10,7 @@ import { Injectable } from '@nestjs/common'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { PrismaQuestionCommentMapper } from '@/infra/database/prisma/mappers/prisma-question-comment-mapper'
 
-export function makeQuestionComment(
+export function MakeQuestionComment(
   override: Partial<QuestionCommentProps> = {},
   id?: UniqueEntityID,
 ) {
@@ -34,7 +34,7 @@ export class QuestionCommentFactory {
   async makePrismaQuestionComment(
     data: Partial<QuestionCommentProps> = {},
   ): Promise<QuestionComment> {
-    const questionComment = makeQuestionComment(data)
+    const questionComment = MakeQuestionComment(data)
 
     await this.prisma.comment.create({
       data: PrismaQuestionCommentMapper.toPrisma(questionComment),

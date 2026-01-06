@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { InMemoryAnswerCommentsRepository } from 'test/repository/in-memory-answer-comment-repository'
-import { MakeAnswerComment } from 'test/factories/make-answer-comment'
 import { FetchAnswerCommentUseCase } from './fetch-answer-comments'
+import { MakeAnswerComment } from 'test/factories/make-answer-comment'
 
 let inMemoryAnswerCommentRepository: InMemoryAnswerCommentsRepository
 let sut: FetchAnswerCommentUseCase
