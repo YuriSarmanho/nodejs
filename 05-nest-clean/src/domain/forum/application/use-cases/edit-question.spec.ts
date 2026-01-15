@@ -109,7 +109,7 @@ describe('edit Question', () => {
       }),
       MakeQuestionAttachment({
         questionId: newQuestion.id,
-        attachmentId: new UniqueEntityID('2'),
+        attachmentId: new UniqueEntityID('3'),
       }),
     )
 
@@ -122,7 +122,7 @@ describe('edit Question', () => {
     })
 
     expect(result.isRight()).toBe(true)
-    expect(inMemoryQuestionAttachmentsRepository).toHaveLength(2)
+    expect(inMemoryQuestionAttachmentsRepository.items).toHaveLength(2)
     expect(inMemoryQuestionAttachmentsRepository.items).toEqual(
           expect.arrayContaining([
             expect.objectContaining({
