@@ -1,4 +1,3 @@
-import { DomainEvents } from '@/core/events/domain-events'
 import { AttachmentsRepository } from '@/domain/forum/application/repositories/attachments-repository'
 import { Attachment } from '@/domain/forum/enterprise/entities/attachment'
 
