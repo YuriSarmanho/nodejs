@@ -7,7 +7,7 @@ import {
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { Injectable } from '@nestjs/common'
 
-export function makeQuestionAttachment(
+export function MakeQuestionAttachment(
   override: Partial<QuestionAttachmentProps> = {},
   id?: UniqueEntityID,
 ) {
@@ -30,7 +30,7 @@ export class QuestionAttachmentFactory {
   async makePrismaQuestionAttachment(
     data: Partial<QuestionAttachmentProps> = {},
   ): Promise<QuestionAttachment> {
-    const questionAttachment = makeQuestionAttachment(data)
+    const questionAttachment = MakeQuestionAttachment(data)
 
     await this.prisma.attachment.update({
       where: {
