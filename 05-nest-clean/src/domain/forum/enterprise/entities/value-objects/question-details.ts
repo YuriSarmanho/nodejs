@@ -49,6 +49,9 @@ export class QuestionDetails extends ValueObject<QuestionDetailsProps> {
   get updatedAt() {
     return this.props.updatedAt
   }
+  get attachments() {
+    return this.props.attachments
+  }
 
   static create(props: QuestionDetailsProps) {
     return new QuestionDetails(props)
