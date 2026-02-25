@@ -3,7 +3,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Notification } from '../../enterprise/entities/notification'
 import { NotificationsRepository } from '../repositories/notifications-repository'
 import { NotAllowedError } from '@/core/erros/not-allowed-error'
-import { ResouceNotFoundError } from '@/core/erros/resource-not-found-error'
+import { ResourceNotFoundError } from '@/core/erros/resource-not-found-error'
 
 interface ReadNotificationUseCaseRequest {
   recipientId: string
@@ -11,7 +11,7 @@ interface ReadNotificationUseCaseRequest {
 }
 
 type ReadNotificationUseCaseResponse = Either<
-  ResouceNotFoundError | NotAllowedError,
+  ResourceNotFoundError | NotAllowedError,
   {
     notification: Notification
   }
@@ -28,7 +28,7 @@ export class ReadNotificationUseCase {
       await this.notificationRepository.findById(notificationId)
 
     if (!notification) {
-      return left(new ResouceNotFoundError())
+      return left(new ResourceNotFoundError())
     }
 
     if (recipientId !== notification.recipientId.toString()) {

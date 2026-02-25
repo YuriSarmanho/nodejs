@@ -3,6 +3,8 @@ import {
   AnswerAttachment,
   AnswerAttachmentProps,
 } from '@/domain/forum/enterprise/entities/answer-attachment'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { Injectable } from '@nestjs/common'
 
 export function MakeAnswerAttachment(
   override: Partial<AnswerAttachmentProps> = {},
@@ -18,4 +20,26 @@ export function MakeAnswerAttachment(
   )
 
   return answer
+}
+
+@Injectable()
+export class AnswerAttachmentFactory {
+  constructor(private prisma: PrismaService) {}
+
+  async makePrismaAnswerAttachment(
+    data: Partial<AnswerAttachmentProps> = {},
+  ): Promise<AnswerAttachment> {
+    const answerAttachment = MakeAnswerAttachment(data)
+
+    await this.prisma.attachment.update({
+      where: {
+        id: answerAttachment.attachmentId.toString(),
+      },
+      data: {
+        answerId: answerAttachment.answerId.toString(),
+      },
+    })
+
+    return answerAttachment
+  }
 }

@@ -3,7 +3,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { QuestionComment } from '@/domain/forum/enterprise/entities/question-comment'
 import { QuestionCommentsRepository } from '@/domain/forum/application/repositories/question-comments-repository'
 import { left, right, type Either } from '@/core/either'
-import { ResouceNotFoundError } from '@/core/erros/resource-not-found-error'
+import { ResourceNotFoundError } from '@/core/erros/resource-not-found-error'
 import { Injectable } from '@nestjs/common'
 
 interface CommentOnQuestionUseCaseRequest {
@@ -13,7 +13,7 @@ interface CommentOnQuestionUseCaseRequest {
 }
 
 type CommentOnQuestionUseCaseResponse = Either<
-  ResouceNotFoundError,
+  ResourceNotFoundError,
   {
     questionComment: QuestionComment
   }
@@ -34,7 +34,7 @@ export class CommentOnQuestionUseCase {
     const question = await this.questionRepository.findById(questionId)
 
     if (!question) {
-      return left(new ResouceNotFoundError())
+      return left(new ResourceNotFoundError())
     }
 
     const questionComment = QuestionComment.create({

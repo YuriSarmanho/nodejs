@@ -3,7 +3,7 @@ import { left, right, Either } from '@/core/either'
 import { Answer } from '../../enterprise/entities/answer'
 import { AnswersRepository } from '../repositories/answers-repository'
 import { NotAllowedError } from '@/core/erros/not-allowed-error'
-import { ResouceNotFoundError } from '@/core/erros/resource-not-found-error'
+import { ResourceNotFoundError } from '@/core/erros/resource-not-found-error'
 import { AnswerAttachmentList } from '../../enterprise/entities/answer-attachment-list'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { AnswerAttachment } from '../../enterprise/entities/answer-attachment'
@@ -17,7 +17,7 @@ interface EditAnswerUseCaseRequest {
 }
 
 type EditAnswerUseCaseResponse = Either<
-  NotAllowedError | ResouceNotFoundError,
+  NotAllowedError | ResourceNotFoundError,
   {
     answer: Answer
   }
@@ -39,7 +39,7 @@ export class EditAnswerUseCase {
     const answer = await this.answerRepository.findById(answerId)
 
     if (!answer) {
-      return left(new ResouceNotFoundError())
+      return left(new ResourceNotFoundError())
     }
 
     if (authorId !== answer.authorId.toString()) {
